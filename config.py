@@ -1,1 +1,1 @@
-bot_token = "vk1.a.Wd1_9CWXgsxkpLqREtxO8tJTRmKznRB66d3nvWJld_bgr9fAa5gj7-M4ShqETL3P1K5GrNrJmvCWwhv0aRxi6jDu9ZZdHOXuUr5DO9HK3rZ-3wkpy7LaLf-kl5xm2SfcdjknH6XnIupc_Rgp-XU1rP56sI2pWI49F6mfXjAdpLVshAbK9DNOT7E8QkR3q8AwiKhgKnCazjiJt76BC96-yA"
+bot_token = "token"
