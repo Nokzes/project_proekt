@@ -10,7 +10,7 @@ def get_user_by_id(user_id):
             vk_id=user_id,
             user=json.dumps({'hp': 100, 'cur_hp': 100, 'dmg': 15, 'cur_dmg': 15, 'exp': 0, 'lvl': 0, 'cur_lvl': 0,
                              'hp_lvl': 0, 'dmg_lvl': 0}),
-            other=json.dumps({"reg": 0, "nick": "nick", "gold": 0, "diamond": 0, "in_menu": 1}),
+            other=json.dumps({"reg": 0, "nick": "nick", "gold": 0, "diamond": 0, "in_menu": 1, "boss_attack": 0}),
             monsters=json.dumps({
                 "monster 1": {"hp": 100, "cur_hp": 100, "dmg": 5, "gold": 30, "exp": 50},
                 "monster 2": {"hp": 300, "cur_hp": 300, "dmg": 30, "gold": 50, "exp": 150},

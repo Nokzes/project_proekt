@@ -1,9 +1,9 @@
 import json
 import random
 import time
-
+from vkbottle.modules import json
 import proekt.handlers.menu
-from vkbottle import GroupEventType, Keyboard, EMPTY_KEYBOARD, Text, GroupTypes
+from vkbottle import GroupEventType, Keyboard, EMPTY_KEYBOARD, Text, GroupTypes, Callback
 from vkbottle.bot import Message, BotLabeler, MessageEvent, Bot
 import config
 import proekt.utils as utils
@@ -19,6 +19,40 @@ async def test(message: Message):
     await message.answer("aga", attachment=at)
 
     # print(message.get_photo_attachments())
+
+
+@other.message(text='test123')
+async def call(message: Message):
+    keyboard = EMPTY_KEYBOARD
+    keyboard = (
+        Keyboard()
+        .add(Callback("Click", {"cmd": "cmd1"}))
+        .add(Callback("Click2", {"cmd": "cmd2"}))
+    )
+
+    await message.answer("callback button", keyboard=keyboard)
+
+@other.message(payload={"cmd": "cmd1"})
+async def hs(message: Message):
+    await message.answer("123wsd")
+
+@other.raw_event(GroupEventType.MESSAGE_EVENT, dataclass=GroupTypes.MessageEvent)
+async def msg(event: GroupTypes.MessageEvent):
+    if event.object.payload["cmd"] == "cmd1":
+        print(event.object)
+        await bot.api.messages.send_message_event_answer(
+            event_id=event.object.event_id,
+            peer_id=event.object.peer_id,
+            user_id=event.object.user_id,
+            event_data=json.dumps({"type": "show_snackbar", "text": "test_message"})
+        )
+    elif event.object.payload["cmd"] == "cmd2":
+        await bot.api.messages.send_message_event_answer(
+            event_id=event.object.event_id,
+            peer_id=event.object.peer_id,
+            user_id=event.object.user_id,
+            event_data=json.dumps({"type": "show_snackbar", "text": "test_message 2"})
+        )
 
 @other.message(text=['Ник <nick>', 'ник <nick>'])
 async def change_nick(message: Message, nick):

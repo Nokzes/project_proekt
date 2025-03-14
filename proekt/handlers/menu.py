@@ -18,8 +18,8 @@ async def menu_base(message: Message):
     # keyboard.add(Text('Инвентарь', {'menu': 'inv'}), color=KeyboardButtonColor.POSITIVE)
     # keyboard.row()
     keyboard.add(Text('Игры', {'menu': 'casino'}))
-    keyboard.row()
-    keyboard.add(Text('Дополнительная информация', {'menu': 'info'}))
+    # keyboard.row()
+    # keyboard.add(Text('Дополнительная информация', {'menu': 'info'}))
     await message.answer('Вы в главном меню', keyboard=keyboard)
 
 

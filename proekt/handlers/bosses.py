@@ -103,9 +103,9 @@ async def boss_1_attack(message: Message):
         user['cur_hp'] -= lich['dmg']
         lich['cur_hp'] -= user['cur_dmg']
         other['boss_attack'] += user['cur_dmg']
-        lich['players'][f'{message.from_id}'] += int(f'{user[f"cur_dmg"]}')
         if str(user_db.vk_id) not in lich['players']:
             lich['players'][f'{user_db.vk_id}'] = int(f'{user[f"cur_dmg"]}')
+        lich['players'][f'{message.from_id}'] += int(f'{user[f"cur_dmg"]}')
         user_db.user = json.dumps(user, ensure_ascii=False)
         boss.stats = json.dumps(lich, ensure_ascii=False)
         user_db.other = json.dumps(other, ensure_ascii=False)
